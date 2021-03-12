@@ -1,0 +1,28 @@
+<?php
+
+class Human
+{
+    const MAX_HITPOINT = 100; //最大HPの定義（定数）
+    public $name; //人間の名前（変数）
+    public $hitPoint; //現在のHP
+    public $attackPoint; //攻撃力
+
+    public function doAttack($enemy) //攻撃するメソッド
+    {
+        echo "「" .$this->name . "」の攻撃\n";
+        echo "【" .$enemy->name . "】に" .$this->attackPoint. "のダメージ!\n";
+        $enemy->tookDamage($this->attackPoint);
+    }
+
+    public function tookDamage($damage)
+    {
+        $this->hitPoint -= $damage;
+        //HPが0にならないように
+        if($this->hitPoint < 0){
+            $this->hitPoint = 0;
+        }
+    }
+}
+
+// $thisはクラスを指すキーワード→$thisはHumanクラスを指すということ今回は->nameだからHumanクラスの中のname
+// プロパティを参照する
