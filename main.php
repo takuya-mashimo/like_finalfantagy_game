@@ -14,14 +14,23 @@ $goblin = new Enemy();
 $tiida->name = "ティーダ";
 $goblin->name = "ゴブリン";
 
+//tiidaとgoblinのHPが0になるまで繰り返す。
+while ($tiida->hitPoint > 0 && $goblin->hitPoint > 0) {
+
+    echo $tiida->name . ":" . $tiida->hitPoint . "/" . $tiida::MAX_HITPOINT . "\n";
+    echo $goblin->name . ":" . $goblin->hitPoint . "/" . $goblin::MAX_HITPOINT . "\n";
+    echo "\n";
+
+    $tiida->doAttack($goblin);
+    echo "\n";
+    $goblin->doAttack($tiida);
+    echo "\n";
+
+}
+
+echo "★ ★ ★ 戦闘終了 ★ ★ ★\n\n";
 echo $tiida->name . ":" . $tiida->hitPoint . "/" . $tiida::MAX_HITPOINT . "\n";
 echo $goblin->name . ":" . $goblin->hitPoint . "/" . $goblin::MAX_HITPOINT . "\n";
-echo "\n";
-
-$tiida->doAttack($goblin);
-echo "\n";
-$goblin->doAttack($tiida);
-echo "\n";
 
 // インスタンス化をするときはnew [クラス名]
 // Humanクラスをインスタンス化→new Human()
@@ -34,4 +43,3 @@ echo "\n";
 // $tiida->doAttack($goblin);について(メソッドにお互いのインスタンスを渡す)
 // HumanクラスのdoAttackメソッドの引数には$goblinが入る。$goblinはEnemyクラスのインスタンス→nameプロパティ・tookDamageメソッドを持つ
 // tookDamageメソッドの引数に、attackPointが入る。→主人公からゴブリンに攻撃力分のダメージが入る
-
