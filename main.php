@@ -14,8 +14,11 @@ $goblin = new Enemy();
 $tiida->name = "ティーダ";
 $goblin->name = "ゴブリン";
 
+$turn = 1; //初期値を設定
+
 //tiidaとgoblinのHPが0になるまで繰り返す。
 while ($tiida->hitPoint > 0 && $goblin->hitPoint > 0) {
+    echo "***$turn ターン目 ***\n\n"; //ここを追加
 
     echo $tiida->name . ":" . $tiida->hitPoint . "/" . $tiida::MAX_HITPOINT . "\n";
     echo $goblin->name . ":" . $goblin->hitPoint . "/" . $goblin::MAX_HITPOINT . "\n";
@@ -26,6 +29,7 @@ while ($tiida->hitPoint > 0 && $goblin->hitPoint > 0) {
     $goblin->doAttack($tiida);
     echo "\n";
 
+    $turn++; //ここを追加
 }
 
 echo "★ ★ ★ 戦闘終了 ★ ★ ★\n\n";
